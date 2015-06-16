@@ -19,9 +19,9 @@ V1.0 2015年6月16日
 
 #Screen
 界面是直接照搬以前做的Android版本，UI大家就别看了
-https://github.com/szpnygo/iOS-fundmoney-swift/blob/master/screen1.jpeg
+![](https://github.com/szpnygo/iOS-fundmoney-swift/blob/master/screen1.jpeg)
 
-https://github.com/szpnygo/iOS-fundmoney-swift/blob/master/screen2.jpeg
+![](https://github.com/szpnygo/iOS-fundmoney-swift/blob/master/screen2.jpeg)
 
 
 #About Devloper
