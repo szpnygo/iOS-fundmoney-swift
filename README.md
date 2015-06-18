@@ -16,6 +16,20 @@ V1.0 2015年6月16日
 关于代码中，网络请求失败读取了一个本地文件中的数据。因为审核的时候被苹果拒绝了一次。
 在美国审核，有时候请求我国内的服务器会出现问题。所以我存了一批数据，如果请求失败了。依然可以显示数据出来，避免被拒绝。
 
+#About Data
+关于基金数据的采集，使用Python3进行的采集，fundspider.py,需要使用bs4以及pymysql。
+采集命令：fundspider.py -m -f funddata.json
+需要采集的内容配置在funddata.json中
+
+```json
+    {
+        "company":"微信",
+        "name":"理财通(财富宝)",
+        "fundid":"000343",
+        "img":""
+    },
+```
+
 
 #Screen
 ![](https://github.com/szpnygo/iOS-fundmoney-swift/blob/master/screen1.jpeg)
