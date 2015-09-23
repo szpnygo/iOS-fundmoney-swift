@@ -39,8 +39,8 @@ class MoneyCls {
    
     //升序
     class func sortFuncAsc(b1:MoneyCls,b2:MoneyCls)->Bool {
-        var d1:Double=(b1.profit as NSString).doubleValue
-        var d2:Double=(b2.profit as NSString).doubleValue
+        let d1:Double=(b1.profit as NSString).doubleValue
+        let d2:Double=(b2.profit as NSString).doubleValue
         if(d1 < d2){
             return true
         }else{
@@ -50,17 +50,18 @@ class MoneyCls {
     
     //降序
     class func sortFuncDesc(b1:MoneyCls,b2:MoneyCls)->Bool {
-        var d1:Double=(b1.profit as NSString).doubleValue
-        var d2:Double=(b2.profit as NSString).doubleValue
+        let d1:Double=(b1.profit as NSString).doubleValue
+        let d2:Double=(b2.profit as NSString).doubleValue
         if(d1 > d2){
             return true
         }else{
             return false
         }
     }
+
     
     func toStirng()->(String){
-        var data="company:\(company) title:\(title) id:\(id) gettime:\(gettime) profit:\(profit) fourteenday+\(fourteenday) foundid:\(foundid) gettime:\(gettime) sevenday:\(sevenday)" as String
+        let data="company:\(company) title:\(title) id:\(id) gettime:\(gettime) profit:\(profit) fourteenday+\(fourteenday) foundid:\(foundid) gettime:\(gettime) sevenday:\(sevenday)" as String
         return (data)
     }
 }

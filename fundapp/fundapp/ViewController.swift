@@ -30,7 +30,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         initData()
         
-        var userAction=UserAction()
+        let userAction=UserAction()
         userAction.log()
     }
     
@@ -39,7 +39,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         waitingDialog.show()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
-            var fundAction=FundAction()
+            let fundAction=FundAction()
             
             var request:Bool
             
@@ -66,7 +66,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     //提示网络请求失败
     func alertNetworkError(){
-        var alert = UIAlertView()
+        let alert = UIAlertView()
         alert.title = "警告！"
         alert.message = "网络请求失败，请检查您的网络"
         alert.addButtonWithTitle("确定")
@@ -85,7 +85,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //返回每一条的view
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        var bean=fundDataArray[indexPath.row] as MoneyCls
+        let bean=fundDataArray[indexPath.row] as MoneyCls
         return getTableViewCell(bean)
     }
     
@@ -102,7 +102,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //segue数据传递
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var secondUI=segue.destinationViewController as! DetailController
+        let secondUI=segue.destinationViewController as! DetailController
         secondUI.bean=fundDataArray[sender!.integerValue]
     }
     
@@ -110,23 +110,23 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBAction func sortBtn(sender: AnyObject) {
         if((sortType) == true){
             sortType=false
-            sort(&fundDataArray, MoneyCls.sortFuncAsc)
+            fundDataArray.sortInPlace(MoneyCls.sortFuncAsc)
         }else{
             sortType=true
-            sort(&fundDataArray, MoneyCls.sortFuncDesc)
+            fundDataArray.sortInPlace(MoneyCls.sortFuncDesc)
         }
         tableview.reloadData()
     }
     
     //返回cell
     func getTableViewCell(bean:MoneyCls)->UITableViewCell{
-        var cell = tableview.dequeueReusableCellWithIdentifier("itemcell") as! UITableViewCell
-        var titleLabel=cell.viewWithTag(1) as! UILabel
-        var profit=cell.viewWithTag(2) as! UILabel
-        var myProfitTitle=cell.viewWithTag(6) as! UILabel
-        var myProfit=cell.viewWithTag(3) as! UILabel
-        var seven=cell.viewWithTag(4) as! UILabel
-        var fourteen=cell.viewWithTag(5) as! UILabel
+        let cell = tableview.dequeueReusableCellWithIdentifier("itemcell")
+        let titleLabel=cell!.viewWithTag(1) as! UILabel
+        let profit=cell!.viewWithTag(2) as! UILabel
+        let myProfitTitle=cell!.viewWithTag(6) as! UILabel
+        let myProfit=cell!.viewWithTag(3) as! UILabel
+        let seven=cell!.viewWithTag(4) as! UILabel
+        let fourteen=cell!.viewWithTag(5) as! UILabel
         
         titleLabel.text="\(bean.company)-\(bean.name)[\(bean.title)]"
         profit.text="\(bean.profit)"
@@ -135,7 +135,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         seven.text="\(bean.sevenday)"
         fourteen.text="\(bean.fourteenday)"
         
-        return cell
+        return cell!
         
     }
 }

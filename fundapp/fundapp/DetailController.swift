@@ -66,7 +66,7 @@ class DetailController : UIViewController{
             }
             chartTitle.text="万元收益走势"
         default:
-            println("error select")
+            print("error select")
         }
         
     }
@@ -85,7 +85,7 @@ class DetailController : UIViewController{
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
-            var fundAction=FundAction()
+            let fundAction=FundAction()
             
             var request:Bool
             
@@ -112,7 +112,7 @@ class DetailController : UIViewController{
     
     //提示网络请求失败
     func alertNetworkError(){
-        var alert = UIAlertView()
+        let alert = UIAlertView()
         alert.title = "警告！"
         alert.message = "网络请求失败，请检查您的网络"
         alert.addButtonWithTitle("确定")
@@ -128,7 +128,7 @@ class DetailController : UIViewController{
         //装载数据
         for item in listDataArray{
             let time=item.gettime
-            let subIndex=advance(time.startIndex, 5)
+            let subIndex=time.startIndex.advancedBy(5)
             titleListTmp.append(item.gettime.substringFromIndex(subIndex))
             dataListTmp.append(CGFloat((item.sevenday as NSString).floatValue))
             profitTmp.append(CGFloat((item.profit as NSString).floatValue))
@@ -167,10 +167,10 @@ class DetailController : UIViewController{
         fund_director.text=bean.fund_director
         fund_manager.text=bean.fund_manager
         
-        var mktime=bean.fund_maketime
-        let subIndex=advance(mktime.startIndex, 7);
-        let subIndex2=advance(mktime.startIndex, 2)
-        var range=Range<String.Index>(start: subIndex2, end: subIndex)
+        let mktime=bean.fund_maketime
+        let subIndex=mktime.startIndex.advancedBy(7);
+        let subIndex2=mktime.startIndex.advancedBy(2)
+        let range=Range<String.Index>(start: subIndex2, end: subIndex)
         fund_maketime.text=bean.fund_maketime.substringWithRange(range)
         
     }
@@ -199,13 +199,13 @@ class DetailController : UIViewController{
         
         
         var data01Array: [CGFloat] = dataList
-        var data01:PNLineChartData = PNLineChartData()
+        let data01:PNLineChartData = PNLineChartData()
         data01.color = PNGreenColor
         data01.itemCount = data01Array.count
         data01.inflexionPointStyle = PNLineChartData.PNLineChartPointStyle.PNLineChartPointStyleCycle
         data01.getData = ({(index: Int) -> PNLineChartDataItem in
-            var yValue:CGFloat = data01Array[index]
-            var item = PNLineChartDataItem()
+            let yValue:CGFloat = data01Array[index]
+            let item = PNLineChartDataItem()
             item.y = yValue
             return item
         })
@@ -226,13 +226,13 @@ class DetailController : UIViewController{
         
         
         var data01Array: [CGFloat] = profitList
-        var data01:PNLineChartData = PNLineChartData()
+        let data01:PNLineChartData = PNLineChartData()
         data01.color = PNGreenColor
         data01.itemCount = data01Array.count
         data01.inflexionPointStyle = PNLineChartData.PNLineChartPointStyle.PNLineChartPointStyleCycle
         data01.getData = ({(index: Int) -> PNLineChartDataItem in
-            var yValue:CGFloat = data01Array[index]
-            var item = PNLineChartDataItem()
+            let yValue:CGFloat = data01Array[index]
+            let item = PNLineChartDataItem()
             item.y = yValue
             return item
         })

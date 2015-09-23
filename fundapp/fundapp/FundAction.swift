@@ -13,13 +13,19 @@ class FundAction {
     
     func loadApiData()->Bool{
         //make api url
-        var apiUrl:NSURL!=NSURL(string: "http://api.smemo.info/fund.php");
+        let apiUrl:NSURL!=NSURL(string: "http://api.smemo.info/fund.php");
         
         
-        var netError:NSErrorPointer=NSErrorPointer()
+        let netError:NSErrorPointer=NSErrorPointer()
         var err:NSError?
         //get data
-        var apiData:NSData!=NSData(contentsOfURL: apiUrl, options: NSDataReadingOptions.DataReadingUncached, error:&err);
+        var apiData:NSData!
+        do {
+            apiData = try NSData(contentsOfURL: apiUrl, options: NSDataReadingOptions.DataReadingUncached)
+        } catch let error as NSError {
+            err = error
+            apiData = nil
+        };
         
         
         if err != nil{
@@ -34,24 +40,30 @@ class FundAction {
         var apiResult=NSString(data: apiData, encoding: NSUTF8StringEncoding)
         
         
-        var apiJson: AnyObject?=NSJSONSerialization.JSONObjectWithData(apiData, options: NSJSONReadingOptions.MutableContainers, error: netError)
+        var apiJson: AnyObject?
+        do {
+            apiJson = try NSJSONSerialization.JSONObjectWithData(apiData, options: NSJSONReadingOptions.MutableContainers)
+        } catch let error as NSError {
+            netError.memory = error
+            apiJson = nil
+        }
         
         
         if let jsonItem = apiJson as? NSArray{
             for data in jsonItem{
                 
                 
-                var profit=data.objectForKey("fund_profit") as! String
-                var fourteenday=data.objectForKey("fund_p_fourteen") as! String
-                var sevenday=data.objectForKey("fund_p_seven") as! String
-                var twentyeight=data.objectForKey("fund_p_twenty") as! String
-                var foundid=data.objectForKey("fundid") as! String
-                var gettime=data.objectForKey("fund_time") as! String
-                var company=data.objectForKey("company") as! String
-                var title=data.objectForKey("fund_title") as! String
-                var id=data.objectForKey("id") as! String
-                var name=data.objectForKey("name") as! String
-                var bean = MoneyCls()
+                let profit=data.objectForKey("fund_profit") as! String
+                let fourteenday=data.objectForKey("fund_p_fourteen") as! String
+                let sevenday=data.objectForKey("fund_p_seven") as! String
+                let twentyeight=data.objectForKey("fund_p_twenty") as! String
+                let foundid=data.objectForKey("fundid") as! String
+                let gettime=data.objectForKey("fund_time") as! String
+                let company=data.objectForKey("company") as! String
+                let title=data.objectForKey("fund_title") as! String
+                let id=data.objectForKey("id") as! String
+                let name=data.objectForKey("name") as! String
+                let bean = MoneyCls()
                 bean.title=title
                 bean.profit=profit
                 bean.fourteenday=fourteenday
@@ -89,12 +101,12 @@ class FundAction {
         
         var err:NSError?
         //获取NSDATA
-        var apiData=NSData(contentsOfURL: nsUrl!)
+        var apiData=NSData(contentsOfURL: nsUrl)
         if err != nil{
-            println("\(err?.description)")
+            print("\(err?.description)")
         }
         
-        var apiJson: AnyObject?=NSJSONSerialization.JSONObjectWithData(apiData!, options: NSJSONReadingOptions.MutableContainers, error: nil)
+        var apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData!, options: NSJSONReadingOptions.MutableContainers)
         
         
         if let jsonItem = apiJson as? NSArray{
@@ -142,15 +154,21 @@ class FundAction {
     func loadFundList(index:String)->Bool{
         
         //make api url
-        var apiUrl:NSURL!=NSURL(string: "http://api.smemo.info/fund.php/Index/getList?id=\(index)");
+        let apiUrl:NSURL!=NSURL(string: "http://api.smemo.info/fund.php/Index/getList?id=\(index)");
         
         var err:NSError?
         
         //get data
-        var apiData:NSData!=NSData(contentsOfURL: apiUrl, options: NSDataReadingOptions.DataReadingUncached, error: &err);
+        var apiData:NSData!
+        do {
+            apiData = try NSData(contentsOfURL: apiUrl, options: NSDataReadingOptions.DataReadingUncached)
+        } catch let error as NSError {
+            err = error
+            apiData = nil
+        };
         
         if err != nil{
-            println(err?.description)
+            print(err?.description)
             return false
         }
         if apiData == nil{
@@ -160,21 +178,21 @@ class FundAction {
         //make json object
         var apiResult=NSString(data: apiData, encoding: NSUTF8StringEncoding)
         
-        var apiJson: AnyObject?=NSJSONSerialization.JSONObjectWithData(apiData, options: NSJSONReadingOptions.MutableContainers, error: nil)
+        let apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData, options: NSJSONReadingOptions.MutableContainers)
         
         if let jsonItem = apiJson as? NSArray{
             for data in jsonItem{
-                var profit=data.objectForKey("fund_profit") as! String
-                var fourteenday=data.objectForKey("fund_p_fourteen") as! String
-                var sevenday=data.objectForKey("fund_p_seven") as! String
-                var twentyeight=data.objectForKey("fund_p_twenty") as! String
-                var foundid=data.objectForKey("fundid") as! String
-                var gettime=data.objectForKey("fund_time") as! String
-                var company=data.objectForKey("company") as! String
-                var title=data.objectForKey("fund_title") as! String
-                var id=data.objectForKey("id") as! String
-                var name=data.objectForKey("name") as! String
-                var bean = MoneyCls()
+                let profit=data.objectForKey("fund_profit") as! String
+                let fourteenday=data.objectForKey("fund_p_fourteen") as! String
+                let sevenday=data.objectForKey("fund_p_seven") as! String
+                let twentyeight=data.objectForKey("fund_p_twenty") as! String
+                let foundid=data.objectForKey("fundid") as! String
+                let gettime=data.objectForKey("fund_time") as! String
+                let company=data.objectForKey("company") as! String
+                let title=data.objectForKey("fund_title") as! String
+                let id=data.objectForKey("id") as! String
+                let name=data.objectForKey("name") as! String
+                let bean = MoneyCls()
                 bean.title=title
                 bean.profit=profit
                 bean.fourteenday=fourteenday
@@ -200,15 +218,15 @@ class FundAction {
         
         var err:NSError?
         //获取NSDATA
-        var apiData=NSData(contentsOfURL: nsUrl!)
+        var apiData=NSData(contentsOfURL: nsUrl)
         if err != nil{
-            println("\(err?.description)")
+            print("\(err?.description)")
         }
     
         //make json object
         var apiResult=NSString(data: apiData!, encoding: NSUTF8StringEncoding)
         
-        var apiJson: AnyObject?=NSJSONSerialization.JSONObjectWithData(apiData!, options: NSJSONReadingOptions.MutableContainers, error: nil)
+        var apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData!, options: NSJSONReadingOptions.MutableContainers)
         
         if let jsonItem = apiJson as? NSArray{
             for data in jsonItem{
@@ -245,8 +263,8 @@ class FundAction {
     
     func testFundData(){
         loadApiData()
-        println("action test")
-        var testArray=getFundDataArray()
+        print("action test")
+        let testArray=getFundDataArray()
         for item in testArray{
             item.toStirng()
         }
@@ -254,10 +272,10 @@ class FundAction {
     
     func testFundListData(){
         loadFundList("000343")
-        println("action test")
-        var testArray=getFundListDataArray()
+        print("action test")
+        let testArray=getFundListDataArray()
         for item in testArray{
-            println(item.toStirng())
+            print(item.toStirng())
         }
     }
     
