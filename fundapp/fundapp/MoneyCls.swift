@@ -33,6 +33,8 @@ class MoneyCls {
     var fund_money:String!
     var fund_time:String!
     
+    var img:String!
+    
     init(){
         
     }
@@ -61,7 +63,7 @@ class MoneyCls {
 
     
     func toStirng()->(String){
-        let data="company:\(company) title:\(title) id:\(id) gettime:\(gettime) profit:\(profit) fourteenday+\(fourteenday) foundid:\(foundid) gettime:\(gettime) sevenday:\(sevenday)" as String
+        let data="company:\(company) title:\(title) id:\(id) gettime:\(gettime) profit:\(profit) fourteenday+\(fourteenday) foundid:\(foundid) gettime:\(gettime) sevenday:\(sevenday) img:\(img)" as String
         return (data)
     }
 }

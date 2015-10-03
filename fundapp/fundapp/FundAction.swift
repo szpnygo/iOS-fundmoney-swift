@@ -13,7 +13,7 @@ class FundAction {
     
     func loadApiData()->Bool{
         //make api url
-        let apiUrl:NSURL!=NSURL(string: "http://api.smemo.info/fund.php");
+        let apiUrl:NSURL!=NSURL(string: "https://api.smemo.info/fund.php");
         
         
         let netError:NSErrorPointer=NSErrorPointer()
@@ -35,9 +35,7 @@ class FundAction {
         if apiData == nil{
             return false
         }
-        
-        //make json object
-        var apiResult=NSString(data: apiData, encoding: NSUTF8StringEncoding)
+
         
         
         var apiJson: AnyObject?
@@ -88,6 +86,7 @@ class FundAction {
         return true
     }
     
+    
     func getFundDataArray()->[MoneyCls]{
         return dataArray
     }
@@ -95,35 +94,32 @@ class FundAction {
     func getTempDataArray()->[MoneyCls]{
         
         //获取本地资源文件路径
-        var path:String=NSBundle.mainBundle().pathForResource("fund", ofType: "json")!
+        let path:String=NSBundle.mainBundle().pathForResource("fund", ofType: "json")!
         //转为NSURL
-        var nsUrl = NSURL(fileURLWithPath: path)
+        let nsUrl = NSURL(fileURLWithPath: path)
         
-        var err:NSError?
         //获取NSDATA
-        var apiData=NSData(contentsOfURL: nsUrl)
-        if err != nil{
-            print("\(err?.description)")
-        }
+        let apiData=NSData(contentsOfURL: nsUrl)
+
         
-        var apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData!, options: NSJSONReadingOptions.MutableContainers)
+        let apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData!, options: NSJSONReadingOptions.MutableContainers)
         
         
         if let jsonItem = apiJson as? NSArray{
             for data in jsonItem{
                 
                 
-                var profit=data.objectForKey("fund_profit") as! String
-                var fourteenday=data.objectForKey("fund_p_fourteen") as! String
-                var sevenday=data.objectForKey("fund_p_seven") as! String
-                var twentyeight=data.objectForKey("fund_p_twenty") as! String
-                var foundid=data.objectForKey("fundid") as! String
-                var gettime=data.objectForKey("fund_time") as! String
-                var company=data.objectForKey("company") as! String
-                var title=data.objectForKey("fund_title") as! String
-                var id=data.objectForKey("id") as! String
-                var name=data.objectForKey("name") as! String
-                var bean = MoneyCls()
+                let profit=data.objectForKey("fund_profit") as! String
+                let fourteenday=data.objectForKey("fund_p_fourteen") as! String
+                let sevenday=data.objectForKey("fund_p_seven") as! String
+                let twentyeight=data.objectForKey("fund_p_twenty") as! String
+                let foundid=data.objectForKey("fundid") as! String
+                let gettime=data.objectForKey("fund_time") as! String
+                let company=data.objectForKey("company") as! String
+                let title=data.objectForKey("fund_title") as! String
+                let id=data.objectForKey("id") as! String
+                let name=data.objectForKey("name") as! String
+                let bean = MoneyCls()
                 bean.title=title
                 bean.profit=profit
                 bean.fourteenday=fourteenday
@@ -174,9 +170,7 @@ class FundAction {
         if apiData == nil{
             return false
         }
-        
-        //make json object
-        var apiResult=NSString(data: apiData, encoding: NSUTF8StringEncoding)
+
         
         let apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData, options: NSJSONReadingOptions.MutableContainers)
         
@@ -212,35 +206,28 @@ class FundAction {
     func getFundListDataArray(index:String)->[MoneyCls]{
         
         //获取本地资源文件路径
-        var path:String=NSBundle.mainBundle().pathForResource("list\(index)", ofType: "json")!
+        let path:String=NSBundle.mainBundle().pathForResource("list\(index)", ofType: "json")!
         //转为NSURL
-        var nsUrl = NSURL(fileURLWithPath: path)
+        let nsUrl = NSURL(fileURLWithPath: path)
         
-        var err:NSError?
         //获取NSDATA
-        var apiData=NSData(contentsOfURL: nsUrl)
-        if err != nil{
-            print("\(err?.description)")
-        }
-    
-        //make json object
-        var apiResult=NSString(data: apiData!, encoding: NSUTF8StringEncoding)
+        let apiData=NSData(contentsOfURL: nsUrl)
         
-        var apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData!, options: NSJSONReadingOptions.MutableContainers)
+        let apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData!, options: NSJSONReadingOptions.MutableContainers)
         
         if let jsonItem = apiJson as? NSArray{
             for data in jsonItem{
-                var profit=data.objectForKey("fund_profit") as! String
-                var fourteenday=data.objectForKey("fund_p_fourteen") as! String
-                var sevenday=data.objectForKey("fund_p_seven") as! String
-                var twentyeight=data.objectForKey("fund_p_twenty") as! String
-                var foundid=data.objectForKey("fundid") as! String
-                var gettime=data.objectForKey("fund_time") as! String
-                var company=data.objectForKey("company") as! String
-                var title=data.objectForKey("fund_title") as! String
-                var id=data.objectForKey("id") as! String
-                var name=data.objectForKey("name") as! String
-                var bean = MoneyCls()
+                let profit=data.objectForKey("fund_profit") as! String
+                let fourteenday=data.objectForKey("fund_p_fourteen") as! String
+                let sevenday=data.objectForKey("fund_p_seven") as! String
+                let twentyeight=data.objectForKey("fund_p_twenty") as! String
+                let foundid=data.objectForKey("fundid") as! String
+                let gettime=data.objectForKey("fund_time") as! String
+                let company=data.objectForKey("company") as! String
+                let title=data.objectForKey("fund_title") as! String
+                let id=data.objectForKey("id") as! String
+                let name=data.objectForKey("name") as! String
+                let bean = MoneyCls()
                 bean.title=title
                 bean.profit=profit
                 bean.fourteenday=fourteenday

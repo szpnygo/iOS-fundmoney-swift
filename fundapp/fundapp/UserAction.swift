@@ -27,7 +27,7 @@ class UserAction{
         let model = UIDevice.currentDevice().model
         
         
-        let req=NSMutableURLRequest(URL: NSURL(string: "http://api.smemo.info/fund.php/Index/loginLog")!)
+        let req=NSMutableURLRequest(URL: NSURL(string: "https://api.smemo.info/fund.php/Index/loginLog")!)
         req.timeoutInterval=6
         req.HTTPMethod="POST"
         req.HTTPBody=NSString(string: "name=\(name)&&systemName=\(systemName)&&systemVersion=\(systemVersion)&&model=\(model)").dataUsingEncoding(NSUTF8StringEncoding)

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "65DB0A57EAA0A6AFB661160967B1B777E0BEABFC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "65DB0A57EAA0A6AFB661160967B1B777E0BEABFC" : 0,
+    "08AFCE533B964A4FCA48FC64DF8FF1B2C7AF802B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E4C91E1D-1DBE-43FF-9200-3C1E6AED474C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "65DB0A57EAA0A6AFB661160967B1B777E0BEABFC" : "iOS-fundmoney-swift\/",
+    "08AFCE533B964A4FCA48FC64DF8FF1B2C7AF802B" : "moneybaby"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "fundapp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "fundapp\/fundapp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/smemo\/ios_moneybaby.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "08AFCE533B964A4FCA48FC64DF8FF1B2C7AF802B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/szpnygo\/iOS-fundmoney-swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "65DB0A57EAA0A6AFB661160967B1B777E0BEABFC"
+    }
+  ]
+}

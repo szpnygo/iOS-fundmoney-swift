@@ -61,6 +61,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 }
 
             })
+            
+            FundListAction.getFundList({ (data:[MoneyCls]) -> Void in
+                for item in data{
+                    print(item.toStirng())
+                }
+            })
         })
     }
 
