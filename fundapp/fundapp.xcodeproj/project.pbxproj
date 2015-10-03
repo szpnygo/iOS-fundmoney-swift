@@ -53,6 +53,7 @@
 		03F10D671BBF715D00E141F7 /* ConstantApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F10D641BBF715D00E141F7 /* ConstantApi.swift */; settings = {ASSET_TAGS = (); }; };
 		03F10D681BBF715D00E141F7 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F10D651BBF715D00E141F7 /* Constant.swift */; settings = {ASSET_TAGS = (); }; };
 		03F10D6C1BBF72CE00E141F7 /* FundListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F10D6B1BBF72CE00E141F7 /* FundListAction.swift */; settings = {ASSET_TAGS = (); }; };
+		03F10D6F1BBF7BEB00E141F7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F10D6E1BBF7BEB00E141F7 /* icon.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +215,7 @@
 		03F10D641BBF715D00E141F7 /* ConstantApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantApi.swift; sourceTree = "<group>"; };
 		03F10D651BBF715D00E141F7 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		03F10D6B1BBF72CE00E141F7 /* FundListAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FundListAction.swift; sourceTree = "<group>"; };
+		03F10D6E1BBF7BEB00E141F7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,9 +469,18 @@
 		03F10D6A1BBF718D00E141F7 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				03F10D6D1BBF7BE400E141F7 /* image */,
 				03BB56121B14A4FB005AF9BD /* Supporting Files */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		03F10D6D1BBF7BE400E141F7 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				03F10D6E1BBF7BEB00E141F7 /* icon.png */,
+			);
+			name = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,6 +688,7 @@
 				03202D931B21F0CB00FAB83A /* fund.json in Resources */,
 				03202DA51B21F9DB00FAB83A /* list000569.json in Resources */,
 				03202DAA1B21F9DB00FAB83A /* list000343.json in Resources */,
+				03F10D6F1BBF7BEB00E141F7 /* icon.png in Resources */,
 				03BB56681B14BC02005AF9BD /* Images.xcassets in Resources */,
 				03202DA21B21F9DB00FAB83A /* list202301.json in Resources */,
 				03202DA91B21F9DB00FAB83A /* list000379.json in Resources */,

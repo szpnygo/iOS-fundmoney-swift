@@ -150,7 +150,7 @@ class FundAction {
     func loadFundList(index:String)->Bool{
         
         //make api url
-        let apiUrl:NSURL!=NSURL(string: "http://api.smemo.info/fund.php/Index/getList?id=\(index)");
+        let apiUrl:NSURL!=NSURL(string: "https://api.smemo.info/fund.php/Index/getList?id=\(index)");
         
         var err:NSError?
         

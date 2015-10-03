@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -37,36 +38,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //加载数据
     func initData(){
         waitingDialog.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            
-            let fundAction=FundAction()
-            
-            var request:Bool
-            
-            if fundAction.loadApiData(){
-                self.fundDataArray=fundAction.getFundDataArray()
-                request=true
-            }else{
-                request=false
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                self.waitingDialog.dismissWithClickedButtonIndex(0, animated: true)
-                if request{
-                    self.tableview.reloadData()
-                }else{
-//                    self.alertNetworkError()
-                    self.fundDataArray=fundAction.getTempDataArray()
-                    self.tableview.reloadData()
-                }
+        FundListAction.getFundList({ (data:[MoneyCls]) -> Void in
+            self.fundDataArray=data
+            self.tableview.reloadData()
+            self.waitingDialog.dismissWithClickedButtonIndex(0, animated: true)
 
-            })
-            
-            FundListAction.getFundList({ (data:[MoneyCls]) -> Void in
-                for item in data{
-                    print(item.toStirng())
-                }
-            })
         })
     }
 
@@ -133,6 +109,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let myProfit=cell!.viewWithTag(3) as! UILabel
         let seven=cell!.viewWithTag(4) as! UILabel
         let fourteen=cell!.viewWithTag(5) as! UILabel
+        let logo=cell?.viewWithTag(10) as! UIImageView
         
         titleLabel.text="\(bean.company)-\(bean.name)[\(bean.title)]"
         profit.text="\(bean.profit)"
@@ -140,7 +117,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         myProfitTitle.text=""
         seven.text="\(bean.sevenday)"
         fourteen.text="\(bean.fourteenday)"
-        
+        let iconImg = UIImage(named: "icon.png")
+//        logo.image=iconImg
+        logo.hnk_setImageFromURL(NSURL(string: bean.img)!)
+        logo.alpha=0.2
         return cell!
         
     }
