@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftyJSON
+
 
 class FundListAction : BaseAction{
     
@@ -50,7 +50,6 @@ class FundListAction : BaseAction{
                     bean.fund_money=item["fund_money"].string
                     bean.fund_time=item["fund_time"].string
                     bean.fund_manager=item["fund_manager"].string
-                    bean.img=item["img"].string
                     dataArray.append(bean)
 
                 }
@@ -59,6 +58,10 @@ class FundListAction : BaseAction{
             }) { (code, message) -> Void in
                 //请求失败
                 print("getFundHistory error code=\(code) message=\(message)", terminator: "")
+                let fundAction=FundAction()
+                let fundDataArray=fundAction.getTempDataArray()
+                success(fundDataArray)
+
         }
         
     }

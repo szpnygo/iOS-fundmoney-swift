@@ -171,6 +171,7 @@ class FundAction {
             return false
         }
 
+        print("request history")
         
         let apiJson: AnyObject?=try? NSJSONSerialization.JSONObjectWithData(apiData, options: NSJSONReadingOptions.MutableContainers)
         

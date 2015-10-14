@@ -107,7 +107,7 @@ class DetailController : UIViewController{
                     self.listDataArray=fundAction.getFundListDataArray(self.bean.foundid)
                     self.initData()
                 }
-                
+                self.initChartView0()
             })
         })
     }
