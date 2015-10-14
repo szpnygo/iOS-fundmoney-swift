@@ -109,7 +109,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let myProfit=cell!.viewWithTag(3) as! UILabel
         let seven=cell!.viewWithTag(4) as! UILabel
         let fourteen=cell!.viewWithTag(5) as! UILabel
-        let logo=cell?.viewWithTag(10) as! UIImageView
         
         titleLabel.text="\(bean.company)-\(bean.name)[\(bean.title)]"
         profit.text="\(bean.profit)"
@@ -117,10 +116,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         myProfitTitle.text=""
         seven.text="\(bean.sevenday)"
         fourteen.text="\(bean.fourteenday)"
-        let iconImg = UIImage(named: "icon.png")
-//        logo.image=iconImg
-        logo.hnk_setImageFromURL(NSURL(string: bean.img)!)
-        logo.alpha=0.2
         return cell!
         
     }

@@ -78,6 +78,8 @@ class DetailController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        addGestureBack()
+        
         
         waitingDialog=UIAlertView()
         waitingDialog.title="Waiting...."
@@ -242,5 +244,25 @@ class DetailController : UIViewController{
         
         chartView.addSubview(lineChart1)
     }
+    
+    //添加滑动返回
+    func addGestureBack(){
+        let panGesture = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        self.view.addGestureRecognizer(panGesture)
+    }
+    
+    /**
+    拖动事件
+    右滑动返回上个页面
+    */
+    func handlePanGesture(sender: UIPanGestureRecognizer){
+        //得到拖的过程中的xy坐标
+        let translation : CGPoint = sender.translationInView(self.view)
+        if translation.x > 96 {
+            self.modalTransitionStyle=UIModalTransitionStyle.CrossDissolve
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+
     
 }
